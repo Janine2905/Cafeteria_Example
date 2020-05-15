@@ -1,0 +1,16 @@
+import java.util.concurrent.locks.Condition; 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock; 
+
+public void put() { 
+monitor.lock(); 
+while(bun == capacity) { 
+try { 
+empty.await(); 
+} catch (InterruptedException e) { } 
+}
+bun++;
+System.out.println("put(): Still " + bun + " buns on the counter"); 
+full.signal();
+monitor.unlock();	
+}
