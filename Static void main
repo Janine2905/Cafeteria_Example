@@ -1,0 +1,11 @@
+import java.util.concurrent.locks.Condition; 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock; 
+
+public static void main(String[] args) {
+KitchenCounter counter = new KitchenCounter(4); 
+new Waiter(theke, "Waiter-1").start(); //Thread 
+new Waiter(theke, "Waiter-2").start(); //Thread 
+for(int i=1; i<=8; i++) 
+new Student(counter, "Student-"+i).start(); 
+	}
