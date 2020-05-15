@@ -1,0 +1,18 @@
+import java.util.concurrent.locks.Condition; 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock; 
+
+
+public class KitchenCounter { 
+
+private int bun = 0;
+private int capacity;
+private Lock monitor = new ReentrantLock(); 
+private Condition full, empty; 
+
+public KitchenCounter(int capacity) { 
+this.capacity = capacity; 
+monitor = new ReentrantLock(); 
+full = monitor.newCondition(); 
+empty = monitor.newCondition(); 
+} 
