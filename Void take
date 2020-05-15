@@ -1,0 +1,18 @@
+import java.util.concurrent.locks.Condition; 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock; 
+
+
+public void take() { 
+monitor.lock(); 
+while(bun == 0) { 
+try { 
+full.await(); 
+} catch (InterruptedException e) { } 
+}
+bun--;
+System.out.println("take(): Still " + bun + " buns on the counter"); 
+empty.signal();
+monitor.unlock(); 
+
+} 
